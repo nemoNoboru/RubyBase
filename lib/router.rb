@@ -1,33 +1,32 @@
-# clase que se encarga del routing de RubyBase
-# recive la data de eventmachine como argumento de la funcion route.
+require 'yajl'
 
-class RubyBase::Router
-  @data = {
-    gets: {}
-    posts: {}
-    puts: {}
-    deletes: {}
-  }
+module RubyBase
+  class Router
+    @@data = {
+      GET: {},
+      POST: {},
+      PUT: {},
+      DELETE: {}
+    }
 
-  class << self
-    def get(arg,&block)
-      @data['gets'][arg] = block
+    def self.get(arg,&block)
+      @@data[:GET][arg] = block
     end
 
-    def post(arg,&block)
-      @data['posts'][arg] = block
+    def self.post(arg,&block)
+      @@data[:POST][arg] = block
     end
 
-    def put(arg,&block)
-      @data['puts'][arg] = block
+    def self.put(arg,&block)
+      @@data[:PUT][arg] = block
     end
 
-    def delete(arg,&block)
-      @data['deletes'][arg] = block
+    def self.delete(arg,&block)
+      @@data[:DELETE][arg] = block
     end
-  end
 
-  def route(data)
-    return (@data[data.method][data.route].call).to_json
+    def route(method,route,post_data)
+      return Yajl::Encoder.encode(@@data[method][route].call)
+    end
   end
 end
