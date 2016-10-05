@@ -1,4 +1,5 @@
 require 'yajl'
+require_relative './cache.rb'
 
 module RubyBase
   class Router
@@ -32,7 +33,8 @@ module RubyBase
         t = key.match(route)
         if t
           params[:match] = t
-          return Yajl::Encoder.encode(@@data[method][key].call(params))
+          return RubyBase::Cache::proxy(method, route, @@data[method][key], params)
+          #return Yajl::Encoder.encode(@@data[method][key].call(params))
         end
       end
       return Yajl::Encoder.encode("Error, no route")
