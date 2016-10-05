@@ -3,6 +3,8 @@ require_relative './cache.rb'
 
 module RubyBase
   class Router
+    @@cache = true
+
     @@data = {
       GET: {},
       POST: {},
@@ -33,8 +35,11 @@ module RubyBase
         t = key.match(route)
         if t
           params[:match] = t
-          return RubyBase::Cache::proxy(method, route, @@data[method][key], params)
-          #return Yajl::Encoder.encode(@@data[method][key].call(params))
+          if @@cache
+            return RubyBase::Cache::proxy(method, route, @@data[method][key], params)
+          end
+          # non cached version
+          return Yajl::Encoder.encode(@@data[method][key].call(params))
         end
       end
       return Yajl::Encoder.encode("Error, no route")
