@@ -1,0 +1,3 @@
+Check if this httpserver implementation is better than the used.
+used: https://github.com/Limetris/eventmachine_httpserver
+candidate: https://github.com/alor/em-http-server/tree/master/lib/em-http-server
