@@ -36,6 +36,7 @@ module RubyBase
         if t
           params[:match] = t
           if @@cache
+            p method
             return RubyBase::Cache::proxy(method, route, @@data[method][key], params)
           end
           # non cached version
