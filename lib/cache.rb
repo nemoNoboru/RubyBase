@@ -4,9 +4,7 @@ module RubyBase
     @data = {}
 
     def self.proxy(method, route, block, params)
-      puts "antes #{method}"
       if [:POST,:PUT,:DELETE].include?(method)
-        puts "despues #{method}"
         @data = {}
         return Yajl::Encoder.encode(block.call(params))
       else

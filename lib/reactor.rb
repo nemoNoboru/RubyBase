@@ -7,7 +7,6 @@ module RubyBase
   class Reactor < EM::Connection
     include EM::HttpServer
 
-
     def process_http_request
       @router ||= RubyBase::Router.new
       response = EM::DelegatedHttpResponse.new(self)

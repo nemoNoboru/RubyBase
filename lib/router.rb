@@ -30,7 +30,7 @@ module RubyBase
 
     def route(method,route,post_data)
       params = {}
-      params[:post] = post_data
+      params[:post] = Yajl::Parser.parse(post_data.to_s)
       @@data[method].each_key do |key|
         t = key.match(route)
         if t
