@@ -15,17 +15,21 @@ A fast and hackable JSON API engine based on EventMachine to be used as a backen
 
 # Usage
 ```ruby
-require 'RubyBase'
+require 'ruby_base'
 
 # reopen the Router class
 class RubyBase::Router
   get '/hello' do
     "Hello world!"
   end
+  # returns
   # 127.0.0.1/hello
   #=> "Hello world!"
 end
+
+RubyBase.run
 ```
+Always remember to call ```RubyBase.run``` when you finish declaring the system behavior.  
 What you return in the block is automatically parsed to JSON and sent to the client
 
 # Usage #2: POST data
@@ -35,6 +39,8 @@ class RubyBase::Router
     puts r[:post]
   end
 end
+
+RubyBase.run
 ```
 r[:post] is the post data sent by the client already parsed from JSON
 
@@ -44,20 +50,27 @@ class RubyBase::Router
   get '/hello/([^/]+)' do |r|
     "Hello world!" * (r[:match][1]).to_i
   end
+  # returns
   # 127.0.0.1/hello/2
   #=> "Hello world! Hello world!"
 end
+
+RubyBase.run
 ```
 
 # RubyBase Matching system
 RubyBase reads your routes from top to bottom and tries to match all of them
-until some route matches the route requested by the client. That r[:match] is
+until some route matches the route requested by the client.   
+That r[:match] is
 the MatchData generated from the matching.
 
 # RubyBase Cache system
-When a 'GET' request is fulfilled and processed it is saved on cache. The next time
+When a 'GET' request is fulfilled and processed it is saved on cache.   
+The next time
 that the client request that exact route in the exact method it will automatically
-receieve the cached response.
+receieve the cached response.  
+
+
 If a request with a method different from GET (POST,PUT,PATCH,DELETE) is made
 **ALL CACHE IS DELETED** and all the caching starts again.
 
@@ -77,15 +90,19 @@ end
  - Profit!
 
 # Contributing
-RubyBase is a small and simple thing. And i have no plans in making it the **NEW SOLUTION
-FOR ALL THINGS TM** RubyBase *tries* to solve **one** problem and *tries* to do it well. Don't try to
+RubyBase is a small and simple thing.   
+And i have no plans in making it the **NEW SOLUTION
+FOR ALL THINGS TM**.   
+RubyBase *tries* to solve **one** problem and *tries* to do it well. Don't try to
 bloat it with new "maybe usefull" features.
+
+
 That said i think that RubyBase needs an Authorization system in order to have some **Sessions**
-Right now i have little free time to do it so if you want to help try implementing that.
+Right now i have little free time to do it so if you want to help try implementing that.  
 Just send pull requests commenting what you have done.
 
 # Issues and known problems
-If you have a problem pull a issue in this repo commenting what is going wrong.
+If you have a problem pull a issue in this repo commenting what is going wrong.  
 Check this list first so you don't report an already known problem.
 
 

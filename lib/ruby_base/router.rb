@@ -1,5 +1,4 @@
 require 'yajl'
-require_relative './cache.rb'
 
 module RubyBase
   class Router

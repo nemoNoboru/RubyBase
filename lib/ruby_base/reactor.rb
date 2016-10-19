@@ -1,6 +1,5 @@
 require 'eventmachine'
 require 'evma_httpserver'
-require_relative 'router.rb'
 
 module RubyBase
 
