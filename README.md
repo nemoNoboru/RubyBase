@@ -2,7 +2,7 @@
 A fast and hackable JSON API engine based on EventMachine to be used as a backend for Angular, Ember , Etc...
 
 # Highlights
-- Fast. Like, Reaally fast [view more in performance][performance].
+- Fast. Like, Reaally fast.
 - Simple
 - Few moving parts, just 100 lines of code.
 - Hackable
@@ -12,6 +12,16 @@ A fast and hackable JSON API engine based on EventMachine to be used as a backen
 - Production ready (no configuration needed)
 - Pure ruby (dependencies have native extensions)
 
+# Installation
+Just run the default
+```
+sudo gem install ruby_base
+```
+Or add
+```ruby
+gem "ruby_base"
+```
+to your gemfile
 
 # Usage
 ```ruby

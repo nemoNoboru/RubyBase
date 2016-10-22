@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "ruby_base"
-  s.version     = "1.0.4"
+  s.version     = "1.0.5"
   s.authors     = ["Felipe Vieira"]
   s.email       = ["felipetavres@gmail.com"]
   s.homepage    = "https://github.com/nemoNoboru/RubyBase"
