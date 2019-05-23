@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = ">= 0"
   s.add_runtime_dependency "eventmachine", '~> 1.2.0'
-  s.add_runtime_dependency "yajl-ruby", '~> 0'
+  s.add_runtime_dependency "yajl-ruby", '< 2'
   s.add_runtime_dependency "eventmachine_httpserver",'~> 0'
 
   s.files = Dir.glob("{bin,lib}/**/*")
